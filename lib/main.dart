@@ -24,7 +24,7 @@ class _RandomWordsState extends State<RandomWords> {
           // 取i/2的整数位,也就是0,1,1,2,2,3,3...
           final index = i ~/ 2;
           if (index >= _suggestions.length) {
-            _suggestions.addAll(generateWordPairs().take(10));
+            _suggestions.addAll(generateWordPairs().take(1));
           }
           return _buildRow(_suggestions[index]);
         });
