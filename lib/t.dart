@@ -14,14 +14,11 @@ class _RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
-  /// 创建suggestions
   Widget _buildSuggestions() {
     return ListView.builder(
         padding: const EdgeInsets.all(16.0),
         itemBuilder: (context, i) {
-          // 若i是奇数,则画一条分隔线
           if (i.isOdd) return const Divider();
-          // 取i/2的整数位,也就是0,1,1,2,2,3,3...
           final index = i ~/ 2;
           if (index >= _suggestions.length) {
             _suggestions.addAll(generateWordPairs().take(10));
@@ -29,13 +26,20 @@ class _RandomWordsState extends State<RandomWords> {
           return _buildRow(_suggestions[index]);
         });
   }
+  // #enddocregion _buildSuggestions
 
+  // #docregion _buildRow
   Widget _buildRow(WordPair pair) {
     return ListTile(
-      title: Text(pair.asPascalCase, style: _biggerFont),
+      title: Text(
+        pair.asPascalCase,
+        style: _biggerFont,
+      ),
     );
   }
+  // #enddocregion _buildRow
 
+  // #docregion RWS-build
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +49,10 @@ class _RandomWordsState extends State<RandomWords> {
       body: _buildSuggestions(),
     );
   }
+  // #enddocregion RWS-build
+  // #docregion RWS-var
 }
+// #enddocregion RWS-var
 
 class RandomWords extends StatefulWidget {
   @override
